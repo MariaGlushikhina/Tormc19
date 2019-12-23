@@ -40,62 +40,13 @@ nz       = 100
 sizex    = 1*pc
 sizey    = 1*pc
 sizez    = 1*pc
-# Make the coordinates
-#
-#xi       = np.linspace(-sizex,sizex,nx+1)
-#yi       = np.linspace(-sizey,sizey,ny+1)
-#zi       = np.linspace(-sizez,sizez,nz+1)
-#xc       = 0.5 * ( xi[0:nx] + xi[1:nx+1] )
-#yc       = 0.5 * ( yi[0:ny] + yi[1:ny+1] )
-#zc       = 0.5 * ( zi[0:nz] + zi[1:nz+1] )
-
-#
-# Make the dust density model
-#
-#qq       = np.meshgrid(xc,yc,zc,indexing='ij')
-#xx       = qq[0]
-#yy       = qq[1]
-#zz       = qq[2]
-#rr       = np.sqrt(xx**2+yy**2+zz**2)
-#rhod     = rho0 * np.exp(-(rr**2/radius**2)/2.0)
 
 
 
-
-#
-# Write the grid file
-#
-#with open('amr_grid.inp','w+') as f:
-##    f.write('1\n')                       # iformat
- #   f.write('0\n')                       # AMR grid style  (0=regular grid, no AMR)
- #   f.write('0\n')                       # Coordinate system
- #   f.write('0\n')                       # gridinfo
- #   f.write('1 1 1\n')                   # Include x,y,z coordinate
- #  f.write('%d %d %d\n'%(nx,ny,nz))     # Size of grid
- #  for value in xi:
- #       f.write('%13.6e\n'%(value))      # X coordinates (cell walls)
- #  for value in yi:
- #      f.write('%13.6e\n'%(value))      # Y coordinates (cell walls)
- #  for value in zi:
- #      f.write('%13.6e\n'%(value))      # Z coordinates (cell walls)
-#
-# Write the density file
-#
-#with open('dust_density.inp','w+') as f:
-#    f.write('1\n')                       # Format number
-#    f.write('%d\n'%(nx*ny*nz))           # Nr of cells
-#    f.write('1\n')                       # Nr of dust species
-#    data = rhod.ravel(order='F')         # Create a 1-D view, fortran-style indexing
-#    data.tofile(f, sep='\n', format="%13.16e")
-#    f.write('\n')
-#
 
 #################################################################
 #
-# Model parameters
-#
-#radius   = 100*au  #change
-#rho0     = 1e-10  #change from -16
+
 
 #
 # Star parameters
