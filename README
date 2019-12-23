@@ -1,0 +1,2 @@
+file grid_and_dens_setup defines density file and grid file. It needs two additional files savemodeltofile and hdffiletomodel.
+file mc_setup creates additional files for monte-carlo simulation
