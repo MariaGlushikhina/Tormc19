@@ -36,11 +36,13 @@ dat.loadAtorusParam(put0 + '/atorus_inp', printDetail=True)
 file_Name = "put0 + '/atorus_inp',"
 #hdfaa000000
 fileNamePrefix ="hdfaa000000."
+fileNamePrefix1 ="amr_grid"
+
 dat.loadZmp_inp(put0 + 'zmp_inp')
 dthdf=dat.dthdf
 #print("dthdf=", dthdf)
  
-timeNumeric =[2, 40, 60, 90] 
+timeNumeric =[40,56] #change from 2, 40, 60, 90
 id0 = []
 arrayTimeTeX = []
 
@@ -50,7 +52,7 @@ for time, i in zip(timeNumeric,xrange(len(timeNumeric))):
     # print('time in yrs=',  timePhys, arrayTimeTeX)
     timeStr= formatFileName(timeNumeric[i])
     id0.append(timeStr)
-#    print (timeStr)
+    print 'timeStr', timeStr
 fileNamePrefix_1 = "dust_density"
 
 hdfFileName_pure = fileNamePrefix+id0[0]
@@ -73,15 +75,12 @@ except Exception as inst:
    
 
 #file(1) = hdfFileName1+'.ascii'
-
-
-
 Nt = 5  #change from 5 to 1
 Nr = Nt
 Rout = 5
 eps = 1e-5
 
-N_cart1 =dat.Nx                  #dimensions
+N_cart1 =dat.Nx                 #dimensions
 N_cart2 =max(dat.Nz, dat.Ny)
 N_cart3 = dat.Ny = max(dat.Nx, dat.Nz)
 
@@ -93,19 +92,19 @@ z = zeros(N_cart3)
 
 DD = zeros(shape=(N_cart1, N_cart2, N_cart3))   #unfilled density array
 #print("DD=",DD)
-x = linspace(-abs(dat.x[-1]), abs(dat.x[-1]), N_cart1)
-#print("x=",x)
+x = linspace((-1.*abs(dat.x[-1])), (1.*abs(dat.x[-1])), N_cart1)
+print("x=",x)
          #maximal radius#
-y = x
-
-z = x  #dat.z - 0.5*dat.z[-1] #allowed to change
-
+y = linspace((-1.*abs(dat.x[-1])), (1.*abs(dat.x[-1])), N_cart2) #
+#print("y",y)
+z = linspace(-2.5*abs(dat.z[-1]), 2.5*abs(dat.z[-1]), N_cart3) #allowed to change
+#print("z",z)
 
 
 
 # writing coordinates
 file = hdfFileName+'.ascii'
-file = os.getcwd() + '/' + hdfFileName_pure + '.inp'
+file = os.getcwd() + '/' + fileNamePrefix1 + '.inp'
 
 ConvertAnsSaveCylindricalToCart(dat,  x,y,z, file)
 #writing density

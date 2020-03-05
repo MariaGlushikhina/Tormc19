@@ -17,34 +17,34 @@ q = analyze.readGrid(sgrid = True)
 xx   = q.x[:]
 yy   = q.y[:]
 zz   = q.z[:]
-qq = np.meshgrid(xx, yy, zz, indexing='ij')
-xc = qq[0]
-yc = qq[1]
-zc = qq[2]
-x1 = xc[:,:,0]
-y1 = yc[:,:,0]
-z1 = zc[:,:,0]
-z2 = np.pi/2 - y1 
+#qq = np.meshgrid(xx, yy, zz, indexing='ij')
+#xc = qq[0]
+#yc = qq[1]
+#zc = qq[2]
+#x1 = xc[:,:,0]
+#y1 = yc[:,:,0]
+#z1 = zc[:,:,0]
+#z2 = np.pi/2 - y1 
 data = analyze.readData(ddens=True, binary=False)
 v = data.rhodust[0,:,:,0]
-c = plb.contourf(zz/natconst.pc,  yy/natconst.pc, (data.rhodust[0,:,:,0]), 20)
+c = plb.contourf(zz/natconst.pc,  xx/natconst.pc, (data.rhodust[0,:,:,0]), 290)
 #plb.xlabel('r [au]')
 #plb.axis([-500000, 500000, -250000, 250000])
 #plb.ylabel(r' [au]')
 #plb.xscale('log')
 #plb.yscale('log')
-#cb = plb.colorbar(c)
-#cb.set_label(r'$\log_{10}{\rho}$', rotation=270.)
+cb = plb.colorbar(c)
+cb.set_label(r'$\log_{10}{\rho}$', rotation=270.)
 
 
 # View a 2-D slice of the 3-D array of the setup
 #
-fig2 = plt.figure()
+#fig2 = plt.figure()
 #q = analyze.readGrid(sgrid = True)
 #v = analyze.readData(ddens=True,  binary=False)
-ax   = fig2.add_subplot(111, projection='3d')
-#ax.plot_wireframe((y1), (x1), np.log10(v), rstride=1, cstride=1)
-surf = ax.plot_surface((y1),  (x1) ,  np.log10(v), cmap=cm.coolwarm,linewidth=0, antialiased=False)# change from data1 to zz
+#ax   = fig2.add_subplot(111, projection='3d')
+#ax.plot_wireframe((y1), (x1), (v), rstride=1, cstride=1)
+#surf = ax.plot_surface((y1),  (x1) ,  (v), cmap=cm.coolwarm,linewidth=0, antialiased=False)# change from data1 to zz
 #fig2.colorbar(surf, shrink=0.5, aspect=5)
 # Make and plot an example image
 #
